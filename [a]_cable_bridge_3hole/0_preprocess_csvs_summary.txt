@@ -1,0 +1,24 @@
+============================================================
+0_preprocess_csvs.py  Execution Log
+Time        : 2026-06-18 17:03:25
+Base folder : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_cable_bridge_3hole
+Input  dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_cable_bridge_3hole/csv_data_[a]_cable_bridge_3hole
+Output dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_cable_bridge_3hole/csv_merged
+============================================================
+
+Found 6 CSV file(s) in input folder.
+
+SKIPPED  S1: already in csv_merged — not reprocessed.
+SKIPPED  S2: already in csv_merged — not reprocessed.
+SKIPPED  S3: already in csv_merged — not reprocessed.
+SKIPPED  S4: already in csv_merged — not reprocessed.
+WROTE    S5: Fusion_Coordinates_S5.csv → Fusion_Coordinates_S5.csv
+WROTE    S6: Fusion_Coordinates_S6.csv → Fusion_Coordinates_S6.csv
+
+============================================================
+SUMMARY
+============================================================
+  Shapes skipped (already merged) : 4
+  New shapes written              : 2
+  Duplicate rows removed (total)  : 0
+============================================================

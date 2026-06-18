@@ -1,0 +1,7 @@
+============================================================
+CHECKPOINT SUMMARY  :  [a]_cable_bridge_3hole_summary_G_1_4.txt
+Guideline reached   :  G4  (G4 sweep-cut 0.4 chamfer on 4 small + 2 larger oval edges at z=0)
+Bodies in compound  :  1
+Cumulative area     :  5951.847 mm²
+Cumulative volume   :  8626.966 mm³
+============================================================

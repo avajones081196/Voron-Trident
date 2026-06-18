@@ -1,0 +1,12 @@
+============================================================
+AREA HISTORY  :  [a]_cable_bridge_3hole_area_history_G_1_5.txt
+Time          :  2026-06-18 16:52:38
+============================================================
+
+ Guideline     Cum. area (mm²)    Δ area (mm²)    Cum. vol (mm³)     Δ vol (mm³)  Label
+--------------------------------------------------------------------------------------------------------------
+  G1                   5989.752       +5989.752          8645.700       +8645.700  G1 tray: walls 15mm, inner_base 3mm, 6 oval through-holes
+  G2                   5958.081         -31.671          8633.062         -12.638  G2 sweep-cut 0.4 chamfer on outer wall edges at z=0
+  G4                   5951.847          -6.233          8626.966          -6.096  G4 sweep-cut 0.4 chamfer on 4 small + 2 larger oval edges at z=0
+  G5                   6078.663        +126.815          8465.994        -160.972  G5 lofted 2 boss(es) + drilled holes from S3
+============================================================
