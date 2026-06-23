@@ -1,0 +1,60 @@
+============================================================
+0_preprocess_csvs.py  Execution Log
+Time        : 2026-06-23 11:45:36
+Base folder : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_cable_bridge_3hole
+Input  dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_cable_bridge_3hole/csv_data_[a]_cable_bridge_3hole
+Output dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_cable_bridge_3hole/csv_merged
+============================================================
+
+Found 42 CSV file(s) in input folder.
+
+SKIPPED  S1: already in csv_merged — not reprocessed.
+SKIPPED  S2: already in csv_merged — not reprocessed.
+SKIPPED  S3: already in csv_merged — not reprocessed.
+SKIPPED  S4: already in csv_merged — not reprocessed.
+SKIPPED  S5: already in csv_merged — not reprocessed.
+SKIPPED  S6: already in csv_merged — not reprocessed.
+SKIPPED  S7: already in csv_merged — not reprocessed.
+SKIPPED  S8: already in csv_merged — not reprocessed.
+SKIPPED  S9: already in csv_merged — not reprocessed.
+SKIPPED  S10: already in csv_merged — not reprocessed.
+SKIPPED  S11: already in csv_merged — not reprocessed.
+SKIPPED  S12: already in csv_merged — not reprocessed.
+SKIPPED  S13: already in csv_merged — not reprocessed.
+SKIPPED  S14: already in csv_merged — not reprocessed.
+SKIPPED  S15: already in csv_merged — not reprocessed.
+SKIPPED  S16: already in csv_merged — not reprocessed.
+SKIPPED  S17: already in csv_merged — not reprocessed.
+SKIPPED  S18: already in csv_merged — not reprocessed.
+SKIPPED  S19: already in csv_merged — not reprocessed.
+SKIPPED  S20: already in csv_merged — not reprocessed.
+SKIPPED  S21: already in csv_merged — not reprocessed.
+SKIPPED  S22: already in csv_merged — not reprocessed.
+SKIPPED  S23: already in csv_merged — not reprocessed.
+SKIPPED  S24: already in csv_merged — not reprocessed.
+SKIPPED  S25: already in csv_merged — not reprocessed.
+SKIPPED  S26: already in csv_merged — not reprocessed.
+SKIPPED  S27: already in csv_merged — not reprocessed.
+SKIPPED  S28: already in csv_merged — not reprocessed.
+SKIPPED  S29: already in csv_merged — not reprocessed.
+SKIPPED  S30: already in csv_merged — not reprocessed.
+SKIPPED  S31: already in csv_merged — not reprocessed.
+SKIPPED  S32: already in csv_merged — not reprocessed.
+SKIPPED  S33: already in csv_merged — not reprocessed.
+SKIPPED  S34: already in csv_merged — not reprocessed.
+SKIPPED  S35: already in csv_merged — not reprocessed.
+SKIPPED  S36: already in csv_merged — not reprocessed.
+SKIPPED  S37: already in csv_merged — not reprocessed.
+SKIPPED  S38: already in csv_merged — not reprocessed.
+SKIPPED  S39: already in csv_merged — not reprocessed.
+SKIPPED  S40: already in csv_merged — not reprocessed.
+WROTE    S41: Fusion_Coordinates_S41.csv → Fusion_Coordinates_S41.csv
+WROTE    S42: Fusion_Coordinates_S42.csv → Fusion_Coordinates_S42.csv
+
+============================================================
+SUMMARY
+============================================================
+  Shapes skipped (already merged) : 40
+  New shapes written              : 2
+  Duplicate rows removed (total)  : 0
+============================================================
