@@ -83,9 +83,9 @@ These are **FDM print-tolerance** thresholds and are intentionally looser than r
 
 ### Completed / in progress
 
-| # | Part | Status | Guidelines | Metrics |
-|---|------|--------|-----------|---------|
-| 1 | `[a]_cable_bridge_3hole` | ✅ Built & validated (VOLUME mode) | G1–G26 (G3 = export; G10 deferred) | Vol diff **0.029 %** 🟢 · Symm vol **0.232 %** 🟢 · Bbox PASS · Centroid 0.0087 mm PASS |
+| # | Part | Status | Guidelines | Vol diff % | Symm vol diff % |
+|---|------|--------|-----------|-----------|-----------------|
+| 1 | `[a]_cable_bridge_3hole` | ✅ Built & validated | G1–G26 (G3 = export; G10 deferred) | **0.029 %** 🟢 | **0.232 %** 🟢 |
 
 > **Any not-yet-built component** carries the placeholder *"discuss structure, methodology and validation script details"* in place of its metrics until it is reconstructed and validated.
 
