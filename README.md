@@ -7,7 +7,9 @@ Reconstruction of the [Voron-Trident](https://github.com/VoronDesign/Voron-Tride
 
 Every part is rebuilt **from scratch in build123d** — not converted from the mesh — so the result is a clean parametric model that matches the original geometry as closely as the source data allows.
 
-> **Progress: 1 of 145 parts reconstructed.** The first part, `[a]_cable_bridge_3hole`, is built end-to-end (G1–G7); validation against the upstream STL is pending. The remaining 144 parts are listed as **Pending** in the status section below.
+> **Progress: 1 of 145 parts reconstructed & validated.** The first part, `[a]_cable_bridge_3hole`, is built end-to-end (G1–G26) and **passes validation against the upstream STL** in VOLUME mode: **volumetric difference 0.029 %, symmetric volume difference 0.232 %, bounding box & centroid PASS.** The remaining 144 parts are listed as **Pending** in the status section below.
+>
+> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (14 patterns P-01…P-14 distilled from part 1 — plane detection, fillet-by-sweep, watertight export, determinism, etc.).
 
 ---
 
@@ -23,17 +25,21 @@ Each folder contains:
 ├── csv_merged/                    # cleaned / merged CSVs (input to the build script)
 ├── 0_preprocess_csvs.py           # CSV cleaner (csv_data_<part_name> -> csv_merged)
 ├── 0_preprocess_csvs_summary.txt
-├── <part_name>_build123d.py       # build123d reconstruction script
-├── <part_name>_G_1_<n>.stl        # build123d output (mesh)
-├── <part_name>_G_1_<n>.step       # build123d output (B-rep)
-├── <part_name>_summary_G_1_<n>.txt        # per-guideline build summary
-├── <part_name>_area_history_G_1_<n>.txt   # cumulative area/volume per guideline
+├── <part_name>.py                 # build123d reconstruction script (name == folder name)
+├── <part_name>.stl                # FINAL build output — a WATERTIGHT mesh
+├── <part_name>_summary.txt        # per-guideline build summary
 ├── source_<part_name>.stl         # reference STL from the upstream Voron-Trident repo
 ├── validation.py                  # build-vs-source comparison (auto volume / surface mode)
 └── <part_name>_validation.txt     # validation report
 ```
 
-The build script runs end to end and writes the STL/STEP for the guideline range it covers; the CSV preprocessor reads `csv_data_<part_name>/` and writes `csv_merged/`.
+The script name matches the folder/part name, and the final deliverable STL is
+named to match too (a stable `<part_name>.stl` the validator expects). During
+development the script can stop at a checkpoint guideline and write range-tagged
+files instead (`<part_name>_G_1_<n>.{stl,step,txt}`); see *Per-guideline
+checkpointing*. The CSV preprocessor reads `csv_data_<part_name>/` and writes
+`csv_merged/`. **Repo-root files:** `TEMPLATE.md` (build spec) and `COOKBOOK.md`
+(reusable patterns) apply to all parts.
 
 ---
 
@@ -77,9 +83,9 @@ These are **FDM print-tolerance** thresholds and are intentionally looser than r
 
 ### Completed / in progress
 
-| # | Part | Status | Guidelines | Metrics |
-|---|------|--------|-----------|---------|
-| 1 | `[a]_cable_bridge_3hole` | 🔨 Built — validation pending | G1, G2, G4, G5, G6, G7 (G3 = export) | *to be filled after validation.py* |
+| # | Part | Status | Guidelines | Vol diff % | Symm vol diff % |
+|---|------|--------|-----------|-----------|-----------------|
+| 1 | `[a]_cable_bridge_3hole` | ✅ Built & validated | G1–G26 (G3 = export; G10 deferred) | **0.029 %** 🟢 | **0.232 %** 🟢 |
 
 > **Any not-yet-built component** carries the placeholder *"discuss structure, methodology and validation script details"* in place of its metrics until it is reconstructed and validated.
 
@@ -148,16 +154,22 @@ These are **FDM print-tolerance** thresholds and are intentionally looser than r
 
 ### `[a]_cable_bridge_3hole`
 
-The first part. A cable-bridge cover built from a single in-plane sketch (S1) plus four auxiliary sketches (S2–S6). It runs to **G7 — six geometry guidelines** (`G1, G2, G4, G5, G6, G7`, with G3 the final export step), and is the first part in the repo to finish as **two separate solids**.
+The first part, built end-to-end across **G1–G26** (G3 = export, G10 deferred) from one main sketch (S1) plus ~40 auxiliary sketches (S2–S42). Final solid is **watertight, volume 8655.1 mm³**, validated against the source STL at **0.029 % volumetric / 0.232 % symmetric difference** (both 🟢), bounding box and centroid PASS.
 
-- **G1 — tray (S1, Z=0 plane).** The S1 sketch is a soup of 76 lines/arcs that assemble into one outer outline, one inner_base outline, and six oval openings (four small + two larger). The inner outline is open in the CSV — its dangling end sits exactly on the outer edge — so the inner_base is closed against a segment of the outer outline. The outer-wall region is extruded **15 mm** (+Z), the inner_base floor **3 mm** (+Z), and the six ovals are left as through-holes. Built as: full 15 mm block, pocket the inner region down to 3 mm, then pierce the six ovals. Volume ≈ 8645.7 mm³.
-- **G2 — outer chamfer (sweep cut).** A 0.4 mm equal (45°) chamfer on the bottom outer-wall edges at z=0. OCCT's edge-chamfer refused this solid, so the chamfer is applied as a **swept S2-profile cut** along each edge.
-- **G4 — oval chamfer (sweep cut).** The same 0.4 mm swept chamfer applied to the six oval rims at z=0 (countersink direction).
-- **G5 — bosses + holes (S3).** Two cylindrical mounting bosses lofted on the −Y wall (outer circle r3.8 @ Y88.5 → r4.8 @ Y89.5), each drilled with an r2.7 hole (+10 mm / −1 mm along Y) and given a 0.4 mm countersink chamfer at the y=94.5 exit face.
-- **G6 — slots (S4).** Two enclosed S4 profiles on the y=94.5 plane, extrude-cut through the body (13 mm along −Y, 1 mm along +Y to avoid coincident surfaces).
-- **G7 — intersected body (S5 ∩ S6).** S5 (Y=126.5 plane) and S6 (X=87.85 plane) are extruded along their normals and **intersected** to form a new solid, kept separate from the G1–G6 part — so the model holds two bodies.
+Highlights / techniques (each recurring trick is captured in `COOKBOOK.md`):
 
-*Validation against `source_[a]_cable_bridge_3hole.stl` is pending; metrics will be recorded here once `validation.py` is run.*
+- **G1 — tray (S1).** 76-primitive sketch → outer outline + inner_base + six oval openings; outer walls extruded 15 mm, floor 3 mm, ovals pierced through.
+- **G2 / G4 — chamfers by swept cut.** OCCT's edge-chamfer refused the solid, so 0.4 mm chamfers on the outer-wall and oval-rim edges are applied as swept profile cuts (P-05).
+- **G5–G9, G11–G13 — bosses, slots, intersected body, mounting features.** Lofted bosses + drilled/countersunk holes (S3), through-slots (S4), an S5∩S6 intersected solid unioned in, and several extrude-cuts.
+- **G14–G20 — edge rounding via sweeps.** Where OCCT fillet failed or was destructive, fillets/rounds are reconstructed as swept-bead cuts/joins along the matched edges.
+- **G21 — the 1 mm cable-bridge fillet (S29).** Straight cuts + an arc transition loft + a **run-out taper to a point** along the S29 spline, driven by `MakePipeShell` with one S33 rail as spine and the other as guide so both edges stay pinned (P-08).
+- **G22 — S35 groove along the S34 rail.** Constant-section sweep along a line+arc+spline chain, with a step-8 run-out taper; collinear "splines" demoted to lines so OCCT can sweep them (P-04).
+- **G23 — 2 mm perimeter fillet (S37/S38).** Built **per edge** (P-06): each fillet profile constructed in the edge's wall/floor frame (inward side chosen by a point-inside probe), straight edges extruded, curved edges swept, tight corners/ramp chord-subdivided.
+- **G24 — oval clear-out.** Re-cuts the six S1 ovals +Z so the G23 rib doesn't overhang the holes.
+- **G25 / G26 — S40 cut and the S41 1 mm fillet.** S41 step-1 fillet uses the user's S42 profile extruded along the edge for a smooth cylindrical surface.
+- **G3 — watertight export.** `.clean()` → STEP round-trip → deterministic conformal mesh → sliver removal + manifold3d repair → verified watertight (P-11). The raw STL was non-watertight because the boolean history leaves zero-area sliver faces; this recipe produces a reproducible solid every run.
+
+**Validation (VOLUME mode):** volumetric diff 0.0290 %, symmetric volume diff 0.2316 %, bbox PASS (exact on all axes), centroid distance 0.0087 mm. Report: `[a]_cable_bridge_3hole_validation.txt`.
 
 ---
 
@@ -169,6 +181,8 @@ The reconstruction pipeline is the same for every part. The comparison metrics d
 
 **Step 2 — CSV preprocessing.** `0_preprocess_csvs.py` reads `csv_data_<part_name>/`, removes duplicate primitives, and writes cleaned files to `csv_merged/`. A summary log records what was merged or dropped.
 
-**Step 3 — build123d reconstruction.** `<part_name>_build123d.py` derives its base directory from its own location (no hardcoded paths), prints the path and size of every CSV on first read, auto-detects each sketch plane (axis-aligned or SVD-fit), and rebuilds the part across numbered geometry guidelines. **G3 is always the final export step** and is not counted in the guideline range. The script tracks cumulative surface area / volume per guideline, supports per-guideline checkpointing to the OCP viewer (`VIEW_AT`), runs `.clean()` before export, and writes STL, STEP, a build summary, and an area-history file.
+**Step 3 — build123d reconstruction.** `<part_name>.py` (named to match the folder) derives its base directory from its own location (no hardcoded paths), prints the path and size of every CSV on first read, auto-detects each sketch plane (axis-aligned or SVD-fit), and rebuilds the part across numbered geometry guidelines added incrementally. **G3 is always the final export step** and is not counted in the guideline range. The script tracks cumulative surface area / volume per guideline and supports per-guideline checkpointing to the OCP viewer (`VIEW_AT`). The export is **watertight and deterministic**: `.clean()` alone isn't enough (the boolean history leaves zero-area sliver faces), so G3 round-trips the solid through STEP, re-meshes deterministically (`BRepMesh parallel=False`), removes the slivers and repairs with `manifold3d`/`trimesh`, and verifies the exported STL reloads strictly watertight (falling back to a raw export with a warning if a repair dependency is missing). The final deliverable is a stable `<part_name>.stl` plus a build summary. Build conventions and recurring solutions are codified in `TEMPLATE.md` and `COOKBOOK.md` (repo root).
+
+> **Watertight-export dependencies:** the repair path needs `trimesh`, `manifold3d` **and `networkx`** installed in the same environment that runs the build. If any is missing, G3 silently falls back to a raw (non-watertight) STL and the validator drops to surface mode.
 
 **Step 4 — validation.** `validation.py` compares the build STL against the upstream `source_<part_name>.stl`, auto-selecting volume or surface mode (see above) and grading against the FDM thresholds. The report is written to `<part_name>_validation.txt`.
