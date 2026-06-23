@@ -1,0 +1,53 @@
+======================================================================
+BUILD SUMMARY  :  [a]_cable_bridge_3hole
+Time           :  2026-06-23 15:16:26
+Range covered  :  G_1_26
+Guidelines     :  G1, G2, G4, G5, G6, G7, G8, G9, G11, G12, G13, G14, G15, G16, G17, G18, G19, G20, G21 (G10 deferred; G3 = export, last)
+Part type      :  Volumetric Solid Part (tray)
+======================================================================
+
+-- G1 : S1 tray on Z=0.0 --
+  Outer wall height    : 15.0 mm
+  Inner_base height    : 3.0 mm
+  Oval through-holes    : 6 (4 small + 2 larger)
+
+-- G2 : Chamfer 0.4 (equal) on outer edges at z=0 --
+
+-- G4 : Chamfer 0.4 (equal) on oval edges at z=0 --
+
+-- G3 : Export --
+  STL                  : [a]_cable_bridge_3hole.stl
+  Total surface area   : 6190.108 mm²
+  Total volume         : 8663.328 mm³
+  Face / edge count    : 318 / 853
+
+======================================================================
+PER-GUIDELINE CUMULATIVE AREA / VOLUME HISTORY
+======================================================================
+ Guideline     Cum. area (mm²)        Δ area    Cum. vol (mm³)         Δ vol  Label
+----------------------------------------------------------------------------------------------------
+  G1                   6005.015     +6005.015          8653.332     +8653.332  G1 tray: walls 15mm, inner_base 3mm, 6 oval through-holes
+  G2                   5908.294       -96.721          8577.754       -75.578  G2 dual chamfer S16=0.4 / S17=1.0 (shared arc split)
+  G4                   5888.768       -19.526          8570.345        -7.409  G4 sweep-cut 0.4 chamfer on 4 small + 2 larger oval edges at z=0
+  G5                   6015.583      +126.815          8409.373      -160.972  G5 lofted 2 boss(es) + drilled holes from S3
+  G6                   6013.874        -1.709          8342.444       -66.929  G6 extrude-cut 2 S4 profiles (13 -Y / 1 +Y)
+  G7                   6469.737      +455.864          8832.284      +489.840  G7 intersected S5∩S6 -> new separate body (2 solids total)
+  G8                   6249.242      -220.495          8821.523       -10.761  G8 fused G1-G6 body + G7 body into one body
+  G9                   6238.373       -10.869          8820.944        -0.579  G9 extrude-cut S7 profile (+Z 8)
+  G11                  6242.682        +4.309          8825.035        +4.091  G11 fillet/extrude-join from S9 step-1 line
+  G12                  6236.879        -5.803          8823.772        -1.263  G12 extrude-cut S10 profile (+Z 8)
+  G13                  6345.600      +108.721          8570.155      -253.617  G13 extrude-cut 3 S11 circles (-Y 7 / +Y 1)
+  G14                  6342.877        -2.723          8569.042        -1.114  G14 fillet r=0.8 on S12 edges (else S13 sweep cut)
+  G15                  6340.433        -2.444          8568.039        -1.002  G15 sweep-cut S15 profile along S14 edges
+  G16                  6321.306       -19.127          8547.362       -20.677  G16 symmetric extrude-cut S18 (+/-5)
+  G17                  6306.410       -14.896          8531.885       -15.477  G17 sweep-cut S19 profile along S20 edges (ends +5)
+  G18                  6277.920       -28.490          8588.830       +56.945  G18 fillet r=4 on S22 edge (else S23 sweep-join, extended to x=111)
+  G19                  6309.361       +31.442          8612.149       +23.319  G19 fillet r=4 on S25 edge (or deferred to sweep-join)
+  G20                  6280.309       -29.052          8601.663       -10.486  G20 extrude-cut S28 (+Z 8) -> completes the G19 4mm fillet
+  G21                  6268.806       -11.503          8593.471        -8.192  G21 fillet step1-4 (arc loft + S33-guided step-4 taper)
+  G22                  6254.152       -14.654          8583.958        -9.513  G22 sweep-cut S35 profile along S34 edges
+  G23                  6206.430       -47.722          8665.469       +81.511  G23 fillet-join 2 mm fillet along S37 perimeter (per-edge construct)
+  G24                  6194.034       -12.397          8664.228        -1.241  G24 extrude-cut 6 S1 ovals (+Z 7 mm)
+  G25                  6191.040        -2.993          8664.049        -0.179  G25 extrude-cut S40 (-X 3 mm / +X 0.01 mm)
+  G26                  6190.108        -0.933          8663.328        -0.721  G26 1-unit fillet along S41 edges (per-edge construct)
+======================================================================

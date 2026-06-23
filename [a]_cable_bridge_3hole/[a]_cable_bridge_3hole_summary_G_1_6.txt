@@ -1,7 +1,0 @@
-============================================================
-CHECKPOINT SUMMARY  :  [a]_cable_bridge_3hole_summary_G_1_6.txt
-Guideline reached   :  G6  (G6 extrude-cut 2 S4 profiles (13 -Y / 1 +Y))
-Bodies in compound  :  1
-Cumulative area     :  6074.982 mm²
-Cumulative volume   :  8396.806 mm³
-============================================================

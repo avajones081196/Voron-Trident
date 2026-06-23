@@ -1,7 +1,0 @@
-============================================================
-CHECKPOINT SUMMARY  :  [a]_cable_bridge_3hole_summary_G_1_5.txt
-Guideline reached   :  G5  (G5 lofted 2 boss(es) + drilled holes from S3)
-Bodies in compound  :  1
-Cumulative area     :  6078.663 mm²
-Cumulative volume   :  8465.994 mm³
-============================================================
