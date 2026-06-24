@@ -9,7 +9,7 @@ Every part is rebuilt **from scratch in build123d** — not converted from the m
 
 > **Progress: 3 of 145 parts reconstructed & validated.** `[a]_cable_bridge_3hole` (G1–G26), `[a]_exhaust_filter_mount_x2` (G1–G6) and `[a]_skirt_logo_x2` (G1–G4) all **pass validation against the upstream STL** in VOLUME mode — cable_bridge: **volumetric 0.029 %, symmetric 0.232 %**; exhaust_filter_mount: **volumetric 0.019 %, symmetric 0.104 %**; skirt_logo: **volumetric 0.071 %, symmetric 0.071 %**; bounding box & centroid PASS for all. The remaining 142 parts are listed as **Pending** in the status section below.
 >
-> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (patterns P-01…P-14, plus **P-11a** added from part 2 — plane detection, fillet/chamfer-by-sweep, offset-chamfer with mitered corners, watertight export, determinism, etc.).
+> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (patterns P-01…P-17, including **P-11a** added from part 2 and **P-15a / P-17** added from part 3 — plane detection, fillet/chamfer-by-sweep, offset-chamfer with mitered corners, single-sketch multi-region fuse, watertight export, determinism, etc.).
 
 ---
 
