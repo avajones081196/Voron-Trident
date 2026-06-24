@@ -7,9 +7,9 @@ Reconstruction of the [Voron-Trident](https://github.com/VoronDesign/Voron-Tride
 
 Every part is rebuilt **from scratch in build123d** — not converted from the mesh — so the result is a clean parametric model that matches the original geometry as closely as the source data allows.
 
-> **Progress: 1 of 145 parts reconstructed & validated.** The first part, `[a]_cable_bridge_3hole`, is built end-to-end (G1–G26) and **passes validation against the upstream STL** in VOLUME mode: **volumetric difference 0.029 %, symmetric volume difference 0.232 %, bounding box & centroid PASS.** The remaining 144 parts are listed as **Pending** in the status section below.
+> **Progress: 2 of 145 parts reconstructed & validated.** `[a]_cable_bridge_3hole` (G1–G26) and `[a]_exhaust_filter_mount_x2` (G1–G6) both **pass validation against the upstream STL** in VOLUME mode — cable_bridge: **volumetric 0.029 %, symmetric 0.232 %**; exhaust_filter_mount: **volumetric 0.019 %, symmetric 0.104 %**; bounding box & centroid PASS for both. The remaining 143 parts are listed as **Pending** in the status section below.
 >
-> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (14 patterns P-01…P-14 distilled from part 1 — plane detection, fillet-by-sweep, watertight export, determinism, etc.).
+> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (patterns P-01…P-14, plus **P-11a** added from part 2 — plane detection, fillet/chamfer-by-sweep, offset-chamfer with mitered corners, watertight export, determinism, etc.).
 
 ---
 
@@ -86,13 +86,14 @@ These are **FDM print-tolerance** thresholds and are intentionally looser than r
 | # | Part | Status | Guidelines | Vol diff % | Symm vol diff % |
 |---|------|--------|-----------|-----------|-----------------|
 | 1 | `[a]_cable_bridge_3hole` | ✅ Built & validated | G1–G26 (G3 = export; G10 deferred) | **0.029 %** 🟢 | **0.232 %** 🟢 |
+| 2 | `[a]_exhaust_filter_mount_x2` | ✅ Built & validated | G1–G6 (G3 = export) | **0.019 %** 🟢 | **0.104 %** 🟢 |
 
 > **Any not-yet-built component** carries the placeholder *"discuss structure, methodology and validation script details"* in place of its metrics until it is reconstructed and validated.
 
-### Pending (144 parts, grouped by subsystem)
+### Pending (143 parts, grouped by subsystem)
 
 **[a] assembly group**
-`[a]_btt_knob_light_shield`, `[a]_cable_bridge_2hole`, `[a]_cover_bearing_x2`, `[a]_cover_logo_x2`, `[a]_d2f_cover`, `[a]_exhaust_fan_grill`, `[a]_exhaust_filter_mount_x2`, `[a]_exhaust_grill`, `[a]_fan_grill_a_x2`, `[a]_fan_grill_b_x2`, `[a]_fan_grill_open_optional_x2`, `[a]_fan_grill_retainer_x2`, `[a]_filter_access_cover`, `[a]_idler_carrier_a_x2`, `[a]_idler_carrier_b_x2`, `[a]_idler_front_x2`, `[a]_keystone_blank_insert_x2`, `[a]_mini12864_case_front_insert`, `[a]_mini12864_case_hinge`, `[a]_skirt_corner_a_x2`, `[a]_skirt_corner_b_x2`, `[a]_skirt_logo_x2`, `[a]_xy_left`, `[a]_xy_right`, `[a]_xy_right_d2f`, `[a]_y_bumper`, `[a]_y_endstop_pod`, `[a]_z_carriage_left`, `[a]_z_carriage_rear`, `[a]_z_carriage_right`, `[a]_z_cover_left`, `[a]_z_cover_rear`, `[a]_z_cover_right`, `[a]_z_rail_stop_x2`
+`[a]_btt_knob_light_shield`, `[a]_cable_bridge_2hole`, `[a]_cover_bearing_x2`, `[a]_cover_logo_x2`, `[a]_d2f_cover`, `[a]_exhaust_fan_grill`, `[a]_exhaust_grill`, `[a]_fan_grill_a_x2`, `[a]_fan_grill_b_x2`, `[a]_fan_grill_open_optional_x2`, `[a]_fan_grill_retainer_x2`, `[a]_filter_access_cover`, `[a]_idler_carrier_a_x2`, `[a]_idler_carrier_b_x2`, `[a]_idler_front_x2`, `[a]_keystone_blank_insert_x2`, `[a]_mini12864_case_front_insert`, `[a]_mini12864_case_hinge`, `[a]_skirt_corner_a_x2`, `[a]_skirt_corner_b_x2`, `[a]_skirt_logo_x2`, `[a]_xy_left`, `[a]_xy_right`, `[a]_xy_right_d2f`, `[a]_y_bumper`, `[a]_y_endstop_pod`, `[a]_z_carriage_left`, `[a]_z_carriage_rear`, `[a]_z_carriage_right`, `[a]_z_cover_left`, `[a]_z_cover_rear`, `[a]_z_cover_right`, `[a]_z_rail_stop_x2`
 
 **Z axis / bed**
 `z_alignment_tool_rear`, `z_bed_left`, `z_bed_rear`, `z_bed_right`, `z_carriage_left`, `z_carriage_rear`, `z_carriage_right`, `z_endstop`, `z_lower_2hole`, `z_lower_3hole`, `z_rear_insert_2hole`, `z_rear_insert_3hole`, `z_stepper_left`, `z_stepper_rear`, `z_stepper_right`
@@ -170,6 +171,20 @@ Highlights / techniques (each recurring trick is captured in `COOKBOOK.md`):
 - **G3 — watertight export.** `.clean()` → STEP round-trip → deterministic conformal mesh → sliver removal + manifold3d repair → verified watertight (P-11). The raw STL was non-watertight because the boolean history leaves zero-area sliver faces; this recipe produces a reproducible solid every run.
 
 **Validation (VOLUME mode):** volumetric diff 0.0290 %, symmetric volume diff 0.2316 %, bbox PASS (exact on all axes), centroid distance 0.0087 mm. Report: `[a]_cable_bridge_3hole_validation.txt`.
+
+### `[a]_exhaust_filter_mount_x2`
+
+A flat mount plate built across **G1–G6** (G3 = export) from one main sketch (S1, the footprint + circular through-hole) plus three auxiliary chamfer/cut sketches (S2–S4). Final solid is **watertight, volume 2112.9 mm³**, validated against the source STL at **0.019 % volumetric / 0.104 % symmetric difference** (both 🟢), bounding box exact on all axes, centroid distance 0.0009 mm.
+
+Highlights / techniques (captured in `COOKBOOK.md`):
+
+- **G1 — footprint (S1).** Outer outline (8 lines + 6 arcs) extruded 4 mm down (sketch plane z=4 → z=0); the inner circle (row 15) pierced as a through-hole.
+- **G2 / G4 — outer chamfers (S2 / S3).** 0.4 mm × 45° chamfer along the outer outline at the z=4 (top) and z=0 (bottom) faces. A literal per-edge sweep of the S2/S3 profile left rough, stepped corners and a continuous sweep self-intersects (P-06/P-09), so the chamfer is cut with an **offset tool** — the wedge between the full outline and the outline offset inward by the chamfer leg, tapered 45°. `offset_2d` miters/blends every corner, so the result is smooth. The chamfer leg (0.4) is read from the S2/S3 diagonal to stay data-driven; the inner circle is excluded.
+- **G5 — hole-end countersinks.** 0.4 mm × 45° chamfer at both ends of the circular hole (z=4 and z=0), built as loft cones (robust + sliver-free, vs sweeping a profile around a closed circle).
+- **G6 — notch (S4).** Extrude-cut the S4 bump/notch profile through the part (5 units −Z, 1 unit +Z; the +Z overshoot avoids coincident faces). This carves the feature that the revised S1 outline left flat.
+- **G3 — watertight export (P-11 + P-11a).** The chamfer cuts + notch leave (1) shared-edge vertices ~1e-7 mm apart on adjacent faces (free edges) and (2) near zero-area sliver triangles (non-manifold edges), so the naive STL reads `solid=False` / `volume=nan`. Fix: **weld** vertices (round to 1e-5 mm) + drop **duplicate and degenerate** faces + fix normals → watertight in-memory → `manifold3d` → **ASCII** STL (binary float32 re-splits shared verts on reload). Deterministic across runs.
+
+**Validation (VOLUME mode):** volumetric diff 0.0194 %, symmetric volume diff 0.1042 %, bbox PASS (exact on all axes), centroid distance 0.0009 mm. Report: `[a]_exhaust_filter_mount_x2_validation.txt`.
 
 ---
 
