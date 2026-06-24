@@ -1,0 +1,47 @@
+==================================================================
+  GEOMETRY VALIDATION REPORT
+  Component : [a]_skirt_logo_x2
+  Build     : [a]_skirt_logo_x2.stl
+  Reference : source_[a]_skirt_logo_x2.stl
+==================================================================
+  Build     : 372 triangles | solid=True | volume=1279.7682 mm^3 | area=1840.9638 mm^2
+  Reference : 1,168 triangles | solid=True | volume=1280.6721 mm^3 | area=1843.4552 mm^2
+
+  >>> MODE: VOLUME  (both meshes form valid closed solids (via manifold3d))
+
+  ----------------------------------------------------------------
+  VOLUME METRICS
+  ----------------------------------------------------------------
+  Build volume               : 1279.7682 mm^3
+  Reference volume           : 1280.6721 mm^3
+  Intersection volume        : 1279.7669 mm^3
+  Volumetric difference %    : 0.0706 %   -> EXCELLENT
+  Symmetric volume diff %    : 0.0708 %   -> EXCELLENT
+
+  ----------------------------------------------------------------
+  BOUNDING BOX  (tolerance +/-0.1 mm per axis)
+  ----------------------------------------------------------------
+  Axis         Build   Reference   Diff mm  Status
+  X min     142.0247    142.0000   +0.0247  PASS
+  X max     168.0000    168.0000   +0.0000  PASS
+  Y min     142.0062    142.0000   +0.0062  PASS
+  Y max     167.9938    168.0000   -0.0062  PASS
+  Z min       0.0000      0.0000   -0.0000  PASS
+  Z max       8.8000      8.8000   +0.0000  PASS
+  Overall bounding box : PASS
+
+  ----------------------------------------------------------------
+  CENTROID  (tolerance +/-0.1 mm per axis)
+  ----------------------------------------------------------------
+  Build    : (155.0000, 155.0000, 2.5848)
+  Reference: (155.0001, 155.0000, 2.5819)
+  Centroid distance : 0.0029 mm  -> PASS
+
+==================================================================
+  SUMMARY  (mode: VOLUME)
+==================================================================
+  Volumetric difference %    : 0.0706 %
+  Symmetric volume diff %    : 0.0708 %
+  Bounding box               : PASS
+  Centroid                   : PASS
+==================================================================

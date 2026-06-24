@@ -1,0 +1,19 @@
+============================================================
+0_preprocess_csvs.py  Execution Log
+Time        : 2026-06-24 10:29:31
+Base folder : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_skirt_logo_x2
+Input  dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_skirt_logo_x2/csv_data_[a]_skirt_logo_x2
+Output dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_skirt_logo_x2/csv_merged
+============================================================
+
+Found 1 CSV file(s) in input folder.
+
+WROTE    S1: Fusion_Coordinates_S1.csv → Fusion_Coordinates_S1.csv
+
+============================================================
+SUMMARY
+============================================================
+  Shapes skipped (already merged) : 0
+  New shapes written              : 1
+  Duplicate rows removed (total)  : 0
+============================================================

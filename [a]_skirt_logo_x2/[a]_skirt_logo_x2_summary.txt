@@ -1,0 +1,37 @@
+======================================================================
+BUILD SUMMARY  :  [a]_skirt_logo_x2
+Time           :  2026-06-24 10:59:51
+Range covered  :  G_1_4
+Guidelines     :  G1, G2, G4 (G3 = export, last)
+Part type      :  Volumetric Solid Part (round skirt logo badge)
+======================================================================
+
+-- G1 : S1 on Z=0.8000000000000002 --
+  Circle (row 1)     : centre=(155.000,155.000) r=13.000
+  Circle extrusion     : 0.8 mm DOWN (Z=0.8000000000000002 -> Z=0.0)
+  Parallelograms rows  : [[2, 3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13]]
+  Parallelogram extr.  : 8.0 mm UP   (Z=0.8000000000000002 -> Z=8.8)
+  Result               : fused into ONE single solid body
+
+-- G2 : Chamfer 0.4 at circular base edge z=0.0 (bottom rim) --
+  Tool                 : offset-loft wedge (P-15), circle outline only
+
+-- G4 : Chamfer 0.4 along 3 parallelogram top edges z=8.8 --
+  NOTE                 : guideline label 'z=8' -> data top face z=8.8 (TEMPLATE §7)
+  Tool                 : offset-loft wedge (P-15), per parallelogram
+
+-- G3 : Export --
+  STL                  : [a]_skirt_logo_x2.stl
+  Total surface area   : 1843.663 mm²
+  Total volume         : 1280.748 mm³
+  Face / edge count    : 31 / 65
+
+======================================================================
+PER-GUIDELINE CUMULATIVE AREA / VOLUME HISTORY
+======================================================================
+ Guideline     Cum. area (mm²)        Δ area    Cum. vol (mm³)         Δ vol  Label
+----------------------------------------------------------------------------------------------------
+  G1                   1886.192     +1886.192          1294.499     +1294.499  G1 solid: circle 0.8 down + 3 parallelograms 8 up, fused to one body
+  G2                   1866.845       -19.347          1288.031        -6.467  G2 chamfer 0.4 at circular base edge z=0.0
+  G4                   1843.663       -23.182          1280.748        -7.284  G4 chamfer 0.4 along 3 parallelogram top edges z=8.8
+======================================================================
