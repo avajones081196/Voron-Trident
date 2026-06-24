@@ -1,0 +1,13 @@
+============================================================
+AREA HISTORY  :  [a]_exhaust_filter_mount_x2_area_history_G_1_6.txt
+Time          :  2026-06-24 09:30:33
+============================================================
+
+ Guideline     Cum. area (mm²)    Δ area (mm²)    Cum. vol (mm³)     Δ vol (mm³)  Label
+--------------------------------------------------------------------------------------------------------------
+  G1                   1699.296       +1699.296          2172.446       +2172.446  G1 solid: outer footprint extruded 4mm down + circle through-hole
+  G2                   1667.224         -32.072          2161.595         -10.851  G2 chamfer S1 outline at z=4 (top, excl. circle)
+  G4                   1635.152         -32.072          2150.744         -10.851  G4 chamfer S1 outline at z=0 (bottom, excl. circle)
+  G5                   1627.471          -7.681          2147.845          -2.899  G5 chamfer 0.4 at inner circle hole ends z=0 and z=4
+  G6                   1635.154          +7.684          2112.352         -35.493  G6 extrude-cut S4 profile (5 units -Z / 1 unit +Z, through)
+============================================================

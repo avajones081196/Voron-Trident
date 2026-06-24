@@ -1,0 +1,47 @@
+==================================================================
+  GEOMETRY VALIDATION REPORT
+  Component : [a]_exhaust_filter_mount_x2
+  Build     : [a]_exhaust_filter_mount_x2.stl
+  Reference : source_[a]_exhaust_filter_mount_x2.stl
+==================================================================
+  Build     : 836 triangles | solid=True | volume=2112.9212 mm^3 | area=1635.0504 mm^2
+  Reference : 1,636 triangles | solid=True | volume=2112.5116 mm^3 | area=1635.1317 mm^2
+
+  >>> MODE: VOLUME  (both meshes form valid closed solids (via manifold3d))
+
+  ----------------------------------------------------------------
+  VOLUME METRICS
+  ----------------------------------------------------------------
+  Build volume               : 2112.9212 mm^3
+  Reference volume           : 2112.5116 mm^3
+  Intersection volume        : 2111.6153 mm^3
+  Volumetric difference %    : 0.0194 %   -> EXCELLENT
+  Symmetric volume diff %    : 0.1042 %   -> EXCELLENT
+
+  ----------------------------------------------------------------
+  BOUNDING BOX  (tolerance +/-0.1 mm per axis)
+  ----------------------------------------------------------------
+  Axis         Build   Reference   Diff mm  Status
+  X min      99.2000     99.2000   +0.0000  PASS
+  X max     150.8000    150.8000   +0.0000  PASS
+  Y min     120.0000    120.0000   +0.0000  PASS
+  Y max     140.0000    140.0000   +0.0000  PASS
+  Z min      -0.0000      0.0000   -0.0000  PASS
+  Z max       4.0000      4.0000   +0.0000  PASS
+  Overall bounding box : PASS
+
+  ----------------------------------------------------------------
+  CENTROID  (tolerance +/-0.1 mm per axis)
+  ----------------------------------------------------------------
+  Build    : (131.3361, 132.5722, 2.0000)
+  Reference: (131.3370, 132.5722, 2.0000)
+  Centroid distance : 0.0009 mm  -> PASS
+
+==================================================================
+  SUMMARY  (mode: VOLUME)
+==================================================================
+  Volumetric difference %    : 0.0194 %
+  Symmetric volume diff %    : 0.1042 %
+  Bounding box               : PASS
+  Centroid                   : PASS
+==================================================================

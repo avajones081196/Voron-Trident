@@ -1,0 +1,22 @@
+============================================================
+0_preprocess_csvs.py  Execution Log
+Time        : 2026-06-23 17:15:39
+Base folder : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_exhaust_filter_mount_x2
+Input  dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_exhaust_filter_mount_x2/csv_data_[a]_exhaust_filter_mount_x2
+Output dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_exhaust_filter_mount_x2/csv_merged
+============================================================
+
+Found 4 CSV file(s) in input folder.
+
+SKIPPED  S1: already in csv_merged — not reprocessed.
+SKIPPED  S2: already in csv_merged — not reprocessed.
+SKIPPED  S3: already in csv_merged — not reprocessed.
+WROTE    S4: Fusion_Coordinates_S4.csv → Fusion_Coordinates_S4.csv
+
+============================================================
+SUMMARY
+============================================================
+  Shapes skipped (already merged) : 3
+  New shapes written              : 1
+  Duplicate rows removed (total)  : 0
+============================================================

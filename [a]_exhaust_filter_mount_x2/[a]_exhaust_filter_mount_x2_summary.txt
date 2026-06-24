@@ -1,0 +1,42 @@
+======================================================================
+BUILD SUMMARY  :  [a]_exhaust_filter_mount_x2
+Time           :  2026-06-24 09:30:33
+Range covered  :  G_1_6
+Guidelines     :  G1, G2, G4, G5, G6 (G3 = export, last)
+Part type      :  Volumetric Solid Part (filter mount plate)
+======================================================================
+
+-- G1 : S1 footprint on Z=4.0 --
+  Outer outline rows   : 1..14 (8 lines + 6 arcs)
+  Extrusion            : 4.0 mm DOWN (Z=4 -> Z=0)
+  Inner circle (row 15) : through-hole
+
+-- G2 : Sweep-cut S2 chamfer along S1 outline at z=4 (top) --
+  Profile              : Fusion_Coordinates_S2.csv (excl. inner circle)
+
+-- G4 : Sweep-cut S3 chamfer along S1 outline at z=0 (bottom) --
+  Profile              : Fusion_Coordinates_S3.csv (excl. inner circle)
+
+-- G5 : Chamfer 0.4 countersink at inner circle hole ends --
+  Hole ends            : z=4 (top) and z=0 (bottom)
+
+-- G6 : Extrude-cut S4 profile (notch) --
+  Profile              : Fusion_Coordinates_S4.csv  (5 units -Z / 1 unit +Z, through)
+
+-- G3 : Export --
+  STL                  : [a]_exhaust_filter_mount_x2.stl
+  Total surface area   : 1635.154 mm²
+  Total volume         : 2112.352 mm³
+  Face / edge count    : 55 / 133
+
+======================================================================
+PER-GUIDELINE CUMULATIVE AREA / VOLUME HISTORY
+======================================================================
+ Guideline     Cum. area (mm²)        Δ area    Cum. vol (mm³)         Δ vol  Label
+----------------------------------------------------------------------------------------------------
+  G1                   1699.296     +1699.296          2172.446     +2172.446  G1 solid: outer footprint extruded 4mm down + circle through-hole
+  G2                   1667.224       -32.072          2161.595       -10.851  G2 chamfer S1 outline at z=4 (top, excl. circle)
+  G4                   1635.152       -32.072          2150.744       -10.851  G4 chamfer S1 outline at z=0 (bottom, excl. circle)
+  G5                   1627.471        -7.681          2147.845        -2.899  G5 chamfer 0.4 at inner circle hole ends z=0 and z=4
+  G6                   1635.154        +7.684          2112.352       -35.493  G6 extrude-cut S4 profile (5 units -Z / 1 unit +Z, through)
+======================================================================
