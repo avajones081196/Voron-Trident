@@ -7,9 +7,9 @@ Reconstruction of the [Voron-Trident](https://github.com/VoronDesign/Voron-Tride
 
 Every part is rebuilt **from scratch in build123d** — not converted from the mesh — so the result is a clean parametric model that matches the original geometry as closely as the source data allows.
 
-> **Progress: 3 of 145 parts reconstructed & validated.** `[a]_cable_bridge_3hole` (G1–G26), `[a]_exhaust_filter_mount_x2` (G1–G6) and `[a]_skirt_logo_x2` (G1–G4) all **pass validation against the upstream STL** in VOLUME mode — cable_bridge: **volumetric 0.029 %, symmetric 0.232 %**; exhaust_filter_mount: **volumetric 0.019 %, symmetric 0.104 %**; skirt_logo: **volumetric 0.071 %, symmetric 0.071 %**; bounding box & centroid PASS for all. The remaining 142 parts are listed as **Pending** in the status section below.
+> **Progress: 4 of 145 parts reconstructed & validated.** `[a]_cable_bridge_3hole` (G1–G26), `[a]_exhaust_filter_mount_x2` (G1–G6), `[a]_skirt_logo_x2` (G1–G4) and `[a]_z_cover_left` (**two bodies** — Body 1 G1–G14, Body 2 G1–G4) all **pass validation against the upstream STL** in VOLUME mode — cable_bridge: **volumetric 0.029 %, symmetric 0.232 %**; exhaust_filter_mount: **volumetric 0.019 %, symmetric 0.104 %**; skirt_logo: **volumetric 0.071 %, symmetric 0.071 %**; z_cover_left: **volumetric 0.035 %, symmetric 0.107 %**; bounding box & centroid PASS for all. The remaining 141 parts are listed as **Pending** in the status section below.
 >
-> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (patterns P-01…P-17, including **P-11a** added from part 2 and **P-15a / P-17** added from part 3 — plane detection, fillet/chamfer-by-sweep, offset-chamfer with mitered corners, single-sketch multi-region fuse, watertight export, determinism, etc.).
+> Two reusable files now live in this folder and drive every future part: **`TEMPLATE.md`** (the stable build spec) and **`COOKBOOK.md`** (patterns P-01…P-17, including **P-11a** added from part 2 and **P-15a / P-17** added from part 3 — plane detection, fillet/chamfer-by-sweep, offset-chamfer with mitered corners, single-sketch multi-region fuse, watertight export, determinism, etc.). Part 4 adds **multi-body handling** (one script builds two separate bodies, each with its own guideline numbering; the export meshes and validates them per-body then combined) and a **T-junction crack repair** in the watertight export (splitting a spanning face at a hanging vertex — the zero-area defect that `fill_holes`/`manifold3d` can't close).
 
 ---
 
@@ -88,13 +88,14 @@ These are **FDM print-tolerance** thresholds and are intentionally looser than r
 | 1 | `[a]_cable_bridge_3hole` | ✅ Built & validated | G1–G26 (G3 = export; G10 deferred) | **0.029 %** 🟢 | **0.232 %** 🟢 |
 | 2 | `[a]_exhaust_filter_mount_x2` | ✅ Built & validated | G1–G6 (G3 = export) | **0.019 %** 🟢 | **0.104 %** 🟢 |
 | 3 | `[a]_skirt_logo_x2` | ✅ Built & validated | G1–G4 (G3 = export) | **0.071 %** 🟢 | **0.071 %** 🟢 |
+| 4 | `[a]_z_cover_left` | ✅ Built & validated | Body 1 G1–G14, Body 2 G1–G4 (G3 = export) | **0.035 %** 🟢 | **0.107 %** 🟢 |
 
 > **Any not-yet-built component** carries the placeholder *"discuss structure, methodology and validation script details"* in place of its metrics until it is reconstructed and validated.
 
-### Pending (142 parts, grouped by subsystem)
+### Pending (141 parts, grouped by subsystem)
 
 **[a] assembly group**
-`[a]_btt_knob_light_shield`, `[a]_cable_bridge_2hole`, `[a]_cover_bearing_x2`, `[a]_cover_logo_x2`, `[a]_d2f_cover`, `[a]_exhaust_fan_grill`, `[a]_exhaust_grill`, `[a]_fan_grill_a_x2`, `[a]_fan_grill_b_x2`, `[a]_fan_grill_open_optional_x2`, `[a]_fan_grill_retainer_x2`, `[a]_filter_access_cover`, `[a]_idler_carrier_a_x2`, `[a]_idler_carrier_b_x2`, `[a]_idler_front_x2`, `[a]_keystone_blank_insert_x2`, `[a]_mini12864_case_front_insert`, `[a]_mini12864_case_hinge`, `[a]_skirt_corner_a_x2`, `[a]_skirt_corner_b_x2`, `[a]_xy_left`, `[a]_xy_right`, `[a]_xy_right_d2f`, `[a]_y_bumper`, `[a]_y_endstop_pod`, `[a]_z_carriage_left`, `[a]_z_carriage_rear`, `[a]_z_carriage_right`, `[a]_z_cover_left`, `[a]_z_cover_rear`, `[a]_z_cover_right`, `[a]_z_rail_stop_x2`
+`[a]_btt_knob_light_shield`, `[a]_cable_bridge_2hole`, `[a]_cover_bearing_x2`, `[a]_cover_logo_x2`, `[a]_d2f_cover`, `[a]_exhaust_fan_grill`, `[a]_exhaust_grill`, `[a]_fan_grill_a_x2`, `[a]_fan_grill_b_x2`, `[a]_fan_grill_open_optional_x2`, `[a]_fan_grill_retainer_x2`, `[a]_filter_access_cover`, `[a]_idler_carrier_a_x2`, `[a]_idler_carrier_b_x2`, `[a]_idler_front_x2`, `[a]_keystone_blank_insert_x2`, `[a]_mini12864_case_front_insert`, `[a]_mini12864_case_hinge`, `[a]_skirt_corner_a_x2`, `[a]_skirt_corner_b_x2`, `[a]_xy_left`, `[a]_xy_right`, `[a]_xy_right_d2f`, `[a]_y_bumper`, `[a]_y_endstop_pod`, `[a]_z_carriage_left`, `[a]_z_carriage_rear`, `[a]_z_carriage_right`, `[a]_z_cover_rear`, `[a]_z_cover_right`, `[a]_z_rail_stop_x2`
 
 **Z axis / bed**
 `z_alignment_tool_rear`, `z_bed_left`, `z_bed_rear`, `z_bed_right`, `z_carriage_left`, `z_carriage_rear`, `z_carriage_right`, `z_endstop`, `z_lower_2hole`, `z_lower_3hole`, `z_rear_insert_2hole`, `z_rear_insert_3hole`, `z_stepper_left`, `z_stepper_rear`, `z_stepper_right`
@@ -199,6 +200,31 @@ Highlights / techniques (captured in `COOKBOOK.md`):
 - **G3 — watertight export (P-11 / P-11a).** Deterministic per-face BRepMesh (`parallel=False`) → weld coincident shared-edge vertices + drop duplicate/degenerate faces + fix normals → `manifold3d` → **ASCII** STL, verified watertight on reload.
 
 **Validation (VOLUME mode):** volumetric diff 0.0706 %, symmetric volume diff 0.0708 %, bbox PASS (within ±0.025 mm on all axes; the curved base introduces small mesh-facet deviation), centroid distance 0.0029 mm. Report: `[a]_skirt_logo_x2_validation.txt`.
+
+### `[a]_z_cover_left`
+
+The first **two-body** part: a Z-axis motor cover **plate (Body 1)** plus a separate **link (Body 2)** that sits in the plate's slot. One script builds both — each body restarts its own guideline numbering at G1 (an `ACTIVE_BODY` + `VIEW_AT` checkpoint selects which body's guideline to review), and the shared G3 exports both, meshed and validated per-body then combined. Final result is **two watertight solids, combined volume 12454.4 mm³** (Body 1 ≈ 11688, Body 2 ≈ 766), validated against the source STL at **0.035 % volumetric / 0.107 % symmetric difference** (both 🟢), bounding box PASS (Z within 0.0003 mm), centroid distance 0.0089 mm.
+
+Body 1 (S1–S4, S7–S8), built across **G1–G14** (G3 = export):
+
+- **G1 — plate (S1).** Rounded outer outline (15 lines + 19 fillet arcs, one closed wire with a tongue/slot) extruded 3 mm −Z (z=−25.993 → −28.993); the three 3.5-dia circles pierced as through-holes; the two 3.2-dia circles and the triangle left solid for later pocketing.
+- **G2 / G4 — top-face pockets.** Extrude-cut the two 3.2-dia circles 1.4 mm −Z and the triangle 0.6 mm −Z.
+- **G5 — bottom counterbores (S2).** Three dia-6 counterbores concentric with the through-holes, each split by 4 lines into 5 sections (central square / two caps / two segments) cut to stepped depths +Z (2.2 / 2.0 / 1.8). The "1 unit −Z" is realised as a 1 mm downward overshoot to avoid a coincident-face sliver.
+- **G6–G9 — chamfers.** 0.4 on the three counterbore mouths (P-16 cones), the five top-face hole rims (P-16), the triangle pocket mouth (offset-loft, P-15), and the whole top outer outline (offset-loft wedge, P-15, matching Fusion's 34-edge tangent chain).
+- **G10 / G11 — bottom-rim unequal chamfer (S3).** Chain split by the S3 step edges: an **unequal 1 (in-plane) × 2 (z)** chamfer runs the perimeter (rows 2→12), the U-slot gets an **equal 0.4**. OCCT `chamfer()` fails here, so the chamfers are cut as **swept-wedge tools** (P-05 fallback); the inward normal is a deterministic **2-D footprint point-in-polygon test** (the 3-D probe hit bottom-face features and gave jagged lofts). The two chamfers meet exactly where G10's inner line intersects G11's inner arc — vertices (27.01, 43.924) and (7.00, 23.914) — matched from the reference.
+- **G12 — pocket-floor rims (S4).** 0.4 countersink at the two 3.2-dia pocket floors (loft frustum tapering inward/down → lesser-diameter floor; no gouge below).
+- **G13 / G14 — exact corner surfaces (S8 + mirror).** Extrude-cut the S8 chamfer cross-section 12 mm along −X to carve the precise top-left slot-mouth corner; G14 mirrors it in the XZ plane, cut +Y, for the other corner. These replace the swept approximation's self-touching meeting and make Body 1 mesh cleanly.
+
+Body 2 (S5, S6) — the link — built across **G1–G4**:
+
+- **G1 — link (S5).** Curved outline (4 lines + 6 arcs) extruded 3 mm −Z with an inner 2.2-dia through-hole.
+- **G2 — outer chamfer.** 0.4 on the outer outline, both faces (P-15), hole untouched.
+- **G3 — bottom counterbore (S6).** Dia-4 counterbore concentric with the hole, 5-section stepped pattern (segments 1.6 / caps 1.8 / central 2.0), reusing the G5 section tooling.
+- **G4 — hole chamfers.** 0.4 on the small-hole top rim and the counterbore mouth (P-16 cones).
+
+**Watertight export (P-11 / P-11a + new T-junction fix).** The final mesh had one **T-junction crack** on Body 1 — three collinear boundary edges at a G5 counterbore pocket edge, where one triangle spanned an edge that two triangles on the other side split at the midpoint. `fill_holes` and `manifold3d` can't close a zero-area crack, so a **T-junction splitter** finds the hanging vertex and splits the spanning face; combined with weld + de-degenerate + fill-holes, each body meshes strictly watertight. Fusion had accepted the STL as a valid solid all along (it computed a volume); trimesh's stricter `is_watertight` was the only thing flagging it.
+
+**Validation (VOLUME mode):** volumetric diff 0.0349 %, symmetric volume diff 0.1066 %, bbox PASS (Z within 0.0003 mm), centroid distance 0.0089 mm. Report: `[a]_z_cover_left_validation.txt`.
 
 ---
 
