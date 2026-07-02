@@ -1,0 +1,25 @@
+============================================================
+AREA HISTORY  :  [a]_z_cover_left_area_history_B2_G_1_4.txt
+Time          :  2026-07-02 10:45:46
+============================================================
+
+ Guideline     Cum. area (mm²)    Δ area (mm²)    Cum. vol (mm³)     Δ vol (mm³)  Label
+--------------------------------------------------------------------------------------------------------------
+  G1                   9206.980       +9206.980         12105.676      +12105.676  G1 solid: outer plate (3 thick, -Z) with three 3.5-dia through holes
+  G2                   9235.129         +28.149         12083.157         -22.519  G2 cut two 3.2-dia circles 1.4 deep (-Z)
+  G4                   9245.929         +10.800         12073.804          -9.353  G4 cut triangle 0.6 deep (-Z)
+  G5                   9293.878         +47.949         11965.428        -108.376  G5 three dia-6 counterbores, 5-section stepped pockets (+Z), bottom face
+  G6                   9281.253         -12.626         11960.703          -4.725  G6 chamfer 0.4 on three counterbore mouths z=-28.993
+  G7                   9269.853         -11.399         11956.121          -4.583  G7 chamfer 0.4 on five top-face hole mouths z=-25.993
+  G8                   9265.980          -3.873         11954.570          -1.551  G8 chamfer 0.4 on triangle pocket mouth z=-25.993
+  G9                   9184.732         -81.247         11926.968         -27.601  G9 chamfer 0.4 on outer outline (34 edges) z=-25.993
+  G10                  9007.789        -176.943         11700.249        -226.719  G10 unequal 1.0x2.0 chamfer on perimeter + arc-starts z=-28.993
+  G11                  8981.084         -26.706         11691.082          -9.168  G11 equal 0.4 chamfer on inner U-slot + arc remainders z=-28.993
+  G12                  8983.999          +2.915         11686.122          -4.960  G12 chamfer 0.4 on two 3.2-dia pocket-floor rims z=-27.393
+  G13                  8983.559          -0.440         11686.091          -0.031  Body1 G13: extrude-cut S8 profile 12 along -X (exact corner chamfer surface)
+  G14                  8983.119          -0.440         11686.060          -0.031  Body1 G14: mirror-of-S8 cut 12 along +Y (exact other-corner chamfer surface)
+  G1                   9788.766        +805.647         12482.125        +796.065  Body2 G1: S5 outline extruded 3 down (-Z), inner 2.2-dia through hole
+  G2                   9748.640         -40.125         12468.702         -13.423  Body2 G2: 0.4 chamfer on S5 outer outline top & bottom (hole untouched)
+  G3                   9758.952         +10.311         12453.563         -15.138  Body2 G3: S6 dia-4 counterbore, 5-section stepped pattern (+Z)
+  G4                   9754.804          -4.148         12451.871          -1.692  Body2 G4: 0.4 chamfer on small-hole top rim + large-hole bottom mouth
+============================================================

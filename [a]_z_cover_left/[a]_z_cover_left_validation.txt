@@ -1,0 +1,47 @@
+==================================================================
+  GEOMETRY VALIDATION REPORT
+  Component : [a]_z_cover_left
+  Build     : [a]_z_cover_left.stl
+  Reference : source_[a]_z_cover_left.stl
+==================================================================
+  Build     : 3,376 triangles | solid=True | volume=12454.4323 mm^3 | area=9754.9412 mm^2
+  Reference : 6,446 triangles | solid=True | volume=12458.7773 mm^3 | area=9746.8572 mm^2
+
+  >>> MODE: VOLUME  (both meshes form valid closed solids (via manifold3d))
+
+  ----------------------------------------------------------------
+  VOLUME METRICS
+  ----------------------------------------------------------------
+  Build volume               : 12454.4323 mm^3
+  Reference volume           : 12458.7773 mm^3
+  Intersection volume        : 12449.9666 mm^3
+  Volumetric difference %    : 0.0349 %   -> EXCELLENT
+  Symmetric volume diff %    : 0.1066 %   -> EXCELLENT
+
+  ----------------------------------------------------------------
+  BOUNDING BOX  (tolerance +/-0.1 mm per axis)
+  ----------------------------------------------------------------
+  Axis         Build   Reference   Diff mm  Status
+  X min       6.0000      6.0000   -0.0000  PASS
+  X max      76.0003     76.0003   +0.0000  PASS
+  Y min     -25.0758    -25.0758   -0.0000  PASS
+  Y max      44.9242     44.9242   -0.0000  PASS
+  Z min     -28.9930    -28.9927   -0.0003  PASS
+  Z max     -25.9930    -25.9927   -0.0003  PASS
+  Overall bounding box : PASS
+
+  ----------------------------------------------------------------
+  CENTROID  (tolerance +/-0.1 mm per axis)
+  ----------------------------------------------------------------
+  Build    : (42.3788, 8.4705, -27.4605)
+  Reference: (42.3744, 8.4782, -27.4594)
+  Centroid distance : 0.0089 mm  -> PASS
+
+==================================================================
+  SUMMARY  (mode: VOLUME)
+==================================================================
+  Volumetric difference %    : 0.0349 %
+  Symmetric volume diff %    : 0.1066 %
+  Bounding box               : PASS
+  Centroid                   : PASS
+==================================================================

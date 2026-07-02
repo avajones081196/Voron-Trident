@@ -1,0 +1,26 @@
+============================================================
+0_preprocess_csvs.py  Execution Log
+Time        : 2026-07-02 10:09:30
+Base folder : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_z_cover_left
+Input  dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_z_cover_left/csv_data_[a]_z_cover_left
+Output dir  : /Users/avajones/Documents/ava_build123d/20260618_assign/[a]_z_cover_left/csv_merged
+============================================================
+
+Found 8 CSV file(s) in input folder.
+
+SKIPPED  S1: already in csv_merged — not reprocessed.
+SKIPPED  S2: already in csv_merged — not reprocessed.
+SKIPPED  S3: already in csv_merged — not reprocessed.
+SKIPPED  S4: already in csv_merged — not reprocessed.
+SKIPPED  S5: already in csv_merged — not reprocessed.
+SKIPPED  S6: already in csv_merged — not reprocessed.
+SKIPPED  S7: already in csv_merged — not reprocessed.
+SKIPPED  S8: already in csv_merged — not reprocessed.
+
+============================================================
+SUMMARY
+============================================================
+  Shapes skipped (already merged) : 8
+  New shapes written              : 0
+  Duplicate rows removed (total)  : 0
+============================================================
